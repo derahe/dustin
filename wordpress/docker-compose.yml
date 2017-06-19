@@ -1,0 +1,26 @@
+version: "3.1"
+
+services:
+  wordpress-db:
+    image: derahe/wordpress:db1
+    networks:
+    - wordpress
+    secrets:
+    - "my-db-secret"
+    volumes:
+    - "wordpressdb:/var/lib/mysql"
+
+  wordpress-web:
+    image: derahe/wordpress:web1
+    networks:
+    - wordpress
+    ports:
+    - "80:80"
+    secrets:
+    - "my-db-secret"
+    
+networks:
+  wordpress:
+
+volumes:
+  wordpressdb:

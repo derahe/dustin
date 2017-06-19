@@ -1,0 +1,17 @@
+version: "1.0"
+
+services:
+  wordpress-db:
+    image: derahe/wordpress:db
+    networks:
+    - wordpress
+
+  wordpress-web:
+    image: derahe/wordpress:web
+    networks:
+    - wordpress
+    ports:
+    - "8080:80"
+    
+    networks:
+        wordpress:
